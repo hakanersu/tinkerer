@@ -1,24 +1,4 @@
-# project1
+# Tinkerer
+Tinkerer is a tinker tool for Laravel.
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![alt text](https://github.com/hakanersu/tinkerer/blob/master/docs/screenshot.png?raw=true)
