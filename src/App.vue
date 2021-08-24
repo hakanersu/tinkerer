@@ -1,17 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+ <tinker />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { invoke } from '@tauri-apps/api/tauri'
+import Tinker from './components/Tinker.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Tinker
+  },
+  data: () => ({
+    result: '',
+    code: '',
+  }),
+  mounted () {
+    this.run("[1,2,3,4]")
+  },
+  methods: {
+    execute () {
+      this.run(this.code)
+    },
+    run (command) {
+      invoke('tinker', { command: command }).then(resp => {
+        console.log(resp)
+        this.result = resp
+      })
+    }
   }
 }
 </script>
