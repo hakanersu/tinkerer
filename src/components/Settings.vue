@@ -6,7 +6,7 @@
       name="path"
       v-model="path"
     >
-    <button @click="open">Select</button>
+    <button @click="open">Choose path</button>
   </div>
 </template>
 
