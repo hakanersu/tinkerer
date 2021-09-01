@@ -4,13 +4,29 @@
     <input
       type="text"
       name="path"
+      v-model="path"
     >
+    <button @click="open">Select</button>
   </div>
 </template>
 
 <script>
+import {dialog} from "@tauri-apps/api";
 export default {
-
+  data: () => ({
+    path: ''
+  }),
+  mounted () {
+    this. path = localStorage.getItem('tinker_path')
+  },
+  methods: {
+    async open () {
+     await dialog.open({ directory: true}).then(res => {
+       this.path = res
+        localStorage.setItem('tinker_path', res)
+     }) 
+    }
+  }
 }
 </script>
 

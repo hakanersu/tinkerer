@@ -56,12 +56,19 @@ export default {
     page: 'default',
     output: '// Use cmd+enter or ctrl+enter to run.',
   }),
+  mounted () {
+    let path = localStorage.getItem('tinker_path')
+    if (!path) {
+      this.page  = 'settings'
+    }
+  },
   methods: {
     setPage (page) {
       this.page = page
     },
     handleExecute (output) {
-      invoke('tinker', { command: output }).then(resp => {
+      const path = localStorage.getItem('tinker_path')
+      invoke('tinker', { command: output , path: path}).then(resp => {
         this.output = resp
       })
     },
