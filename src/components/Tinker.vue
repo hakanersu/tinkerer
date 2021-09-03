@@ -68,7 +68,8 @@ export default {
     },
     handleExecute (output) {
       const path = localStorage.getItem('tinker_path')
-      invoke('tinker', { command: output , path: path}).then(resp => {
+      const bin_path = localStorage.getItem('bin_path') || '/usr/bin/php'
+      invoke('tinker', { command: output , path: path, bin: bin_path}).then(resp => {
         this.output = resp
       })
     },

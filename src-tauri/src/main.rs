@@ -6,13 +6,13 @@ use std::io::prelude::*;
 use std::process::{Command, Stdio};
 
 #[tauri::command]
-fn tinker(command: String, path: String) -> String {
+fn tinker(command: String, path: String, bin: String) -> String {
 	let artisan_path = path + "/artisan";
 	let b = std::path::Path::new(&artisan_path).exists();
 	if !b {
 		return String::from("Artisan file not found. Please check your path");
 	}
-	let process = match Command::new("php")
+	let process = match Command::new(bin)
 		.arg(artisan_path)
 		.arg("tinker")
 		.stdin(Stdio::piped())
